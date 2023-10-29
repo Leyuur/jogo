@@ -2,16 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Jogo do gato</title>
+    <title>Jogo de Luta</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/game.js" defer></script>
+    <script src="./js/sprites.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-    <canvas></canvas>
-
-    <script src="./js/game.js"></script>
-    <script src="./js/sprites.js"></script>
-    <script src="./js/controls.js"></script>
-    
+    <!-- container div -->
+    <div style=" position: relative; display: inline-block;">
+        <!-- smaller container div -->
+        <div style="position: absolute; display: flex; flex-direction: column; width: 100%;">
+            <!-- player pic -->
+            <img src="assets/player/profile.png" style="width: 90px; margin-top: 20px;">
+            <!-- player health -->
+            <div style="background: red; height: 10px; width: 120px; margin-top: -35px; margin-left: 100px; border: solid black 1px;">
+            <img src="assets/player/heart.png" style="width: 25px; margin-top: -10px; margin-left: -15px;">
+            </div>
+            <!-- player stamina -->
+            <div style="background:  yellow; height: 10px; width: 120px; margin-top: 7px; margin-left: 100px; border: solid black 1px;">
+                <img src="assets/player/raio.png" style="width: 25px; margin-top: -10px; margin-left: -15px;">
+            </div>
+        </div>
+        <canvas></canvas>
+    </div>
 </body>
 </html>
