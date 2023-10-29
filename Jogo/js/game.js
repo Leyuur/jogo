@@ -1,32 +1,39 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
-const canvasWidth = 1024
-const canvasHeight = 576
+const canvasWidth = window.innerWidth
+const canvasHeight = window.innerHeight
 
 canvas.width = canvasWidth
 canvas.height = canvasHeight
 
-let prevTime = 0
+const desiredFPS = 120; // The desired frames per second
+const frameTime = 1000 / desiredFPS; // The time per frame in milliseconds
 
-animate()
+let prevTime = performance.now();
+let lag = 0;
 
-function animate(){
-    window.requestAnimationFrame(animate)
+function animate() {
+    const currentTime = performance.now();
+    const elapsed = currentTime - prevTime;
+    prevTime = currentTime;
+    lag += elapsed;
 
-    handleControls()
-    
-    ctx.fillStyle = "black"
-    ctx.fillRect(0,0,canvasWidth,canvasHeight)
+    handleControls();
 
-    // background.update()
-    player.update()
-    // player2.update()
+    while (lag >= frameTime) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-    let delta = (performance.now() = prevTime)
-    let fps = 1 / delta
+        background.update();
+        player.update();   
+        npc.update();
+        platform.draw()
 
-    prevTime = performance.now()
-    //console.log(`FPS: ${fps}`)
+        lag -= frameTime;
+    }
+
+    window.requestAnimationFrame(animate);
 }
 
+animate(); 
