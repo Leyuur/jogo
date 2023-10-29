@@ -146,6 +146,8 @@ class Sprite {
             ){
                 console.log("Acertou!")
         }
+        
+        // Metodo de colisão do player com a plataforma 
         if (
             player.position.x + player.width >= platform.position.x &&
             player.position.x <= platform.position.x + platform.width &&
